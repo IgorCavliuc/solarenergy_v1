@@ -1,0 +1,259 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: transparent;
+  transition: 0.3s;
+
+  &.withFocusWithin {
+    &:focus-within {
+      .inputContainer {
+      }
+    }
+  }
+
+  &.focused {
+    .inputContainer {
+    }
+  }
+
+  &.disabled {
+    opacity: 0.8;
+  }
+
+  .container {
+    background:  rgba(255, 255, 255, 0.1);
+    height: 40px;
+    //padding: 3px 10px;
+    .clearButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin: 0;
+      padding: 30px;
+
+      color: #fff;
+      white-space: nowrap;
+      text-decoration: none;
+
+      border: none;
+      border-radius: 8px;
+
+      background-color: transparent;
+
+      outline: none;
+
+      cursor: pointer;
+
+      user-select: none;
+      pointer-events: all;
+
+      &:hover,
+      &:focus {
+background: red;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.8);
+
+  user-select: none;
+  font-weight: 400;
+  font-size: 12px;
+  font-stretch: normal;
+  line-height: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  border-radius: 8px;
+
+  background-color: transparent;
+
+  > * {
+    //border: 1px solid #fff;
+
+    background: transparent;
+    border-radius: 8px;
+    .inputContainer {
+      border: 1px solid red;
+
+      border-right: 1px solid #fff;
+      border-left: 1px solid #fff;
+    }
+
+    &:not(.inputContainer) {
+      display: flex;
+      align-items: center;
+      color: gray;
+      user-select: none;
+      font-weight: 500;
+      font-size: 16px;
+      font-stretch: normal;
+      line-height: 20px;
+
+      >input{
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+.hintText {
+  color: var(gray);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+
+  user-select: none;
+  font-weight: 500;
+  font-size: 14px;
+  font-stretch: normal;
+  line-height: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+
+  >input{
+  padding-right: 20px;
+  padding-left: 20px;
+  }
+  &:not(:first-child) {
+    border-left: 1px solid #fff;
+  }
+
+  &:not(:last-child) {
+    border-right: 1px solid #fff;
+  }
+
+  > *:not(.input) {
+    color: var(--text-secondary);
+
+    user-select: none;
+
+    font-weight: 500;
+    font-size: 16px;
+    font-stretch: normal;
+    line-height: 20px;
+  }
+}
+
+.input {
+  flex: 1;
+
+  margin: 0;
+  padding: var(--input-padding-vertical) 0;
+
+  color: #fff;
+
+  border: none;
+
+  background-color: transparent;
+
+  outline: none;
+
+  resize: none;
+
+  font-weight: 500;
+  font-size: 16px;
+  font-stretch: normal;
+  line-height: 20px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &::placeholder {
+    color: gray;
+    font-weight: 500;
+    font-size: 16px;
+    font-stretch: normal;
+    line-height: 20px;
+  }
+}
+
+.sm {
+  .inputContainer {
+    >input{
+    padding: 0 var(--spacing-special);
+    }
+  }
+  .input {
+    --input-padding-vertical: calc(20px - 1px);
+  }
+}
+
+.md {
+  .inputContainer {
+    padding: 0 var(--spacing-2xl);
+  }
+  .input {
+    --input-padding-vertical: calc(var(--spacing-special) - 1px);
+  }
+}
+
+.lg {
+  .inputContainer {
+    padding: 0 var(--spacing-2xl);
+  }
+  .input {
+    --input-padding-vertical: calc(var(--spacing-special) - 1px);
+  }
+}
+
+.default {
+  //
+}
+
+.error {
+  gray: var(--text-error-primary);
+
+  .inputContainer {
+    --input-border-color: var(--border-error);
+  }
+}
+
+.warning {
+  gray: var(--text-warning-primary);
+
+  .inputContainer {
+    --input-border-color: var(--border-warning);
+  }
+}
+
+.success {
+  gray: var(--text-success-primary);
+
+  .inputContainer {
+    --input-border-color: var(--border-success);
+  }
+}
+
+.progress {
+  gray: var(--text-brand-primary);
+
+  .inputContainer {
+    --input-border-color: var(--border-brand);
+  }
+}

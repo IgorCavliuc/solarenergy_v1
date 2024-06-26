@@ -1,0 +1,330 @@
+.main_background {
+  background-image: url("./assets/solar_panel.jpeg");
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  margin-top: -92px;
+  z-index: 1;
+  opacity: .1;
+}
+.main_container{
+  position: relative;
+}
+
+.main_block{
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main_title{
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 67px;
+  margin-bottom: 10px;
+
+}
+.main_descripton{
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.info_wrapper{
+  min-height: 100vh;
+  width: 100%;
+
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+  >h1{
+    font-size: 43px;
+    line-height: 47px;
+    font-style: italic;
+    text-align: center;
+    font-weight: 500;
+    max-width: 70%;
+    margin: 50px auto;
+
+  }
+}
+
+.info_item{
+  max-width: 45%;
+
+}
+.info_item_title{
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.info_item_description{
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.calc_wrapper_bg{
+  background-image: url("./assets/ustanovka.jpeg");
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: .1;
+
+}
+.info_wrapper_content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 100%;
+
+  padding: 20px ;
+  gap: 60px;
+  display: flex;
+  flex-direction: column;
+}
+.calc_wrapper{
+  //position: relative;
+
+
+  >h1{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: bold;
+
+  }
+  >p{
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+.calc_wrapper_content{
+  //position: absolute;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  >h1{
+    font-size: 43px;
+    line-height: 47px;
+    font-style: italic;
+    text-align: center;
+    font-weight: 500;
+    max-width: 70%;
+    margin: 50px auto;
+  }
+
+}
+
+.calc_tab_wrapper{
+  //border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #242424;
+  padding:0 ;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: height 0.7s ease
+}
+.close{
+
+    position: absolute;
+  top: - 30px;
+  right: 0;
+}
+.calculator_visible{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+.calculator_hidden{
+  display: none;
+}
+.calc_tab{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px;
+}
+
+.calc_container{
+  display: flex;
+  //justify-content: space-between;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 50vh;
+  transition: height 0.3s ease-in-out;
+  padding:  0 20px 20px 20px;
+  gap: 10px;
+
+}
+.subtitle{
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  margin: 20px auto;
+  max-width: 800px;
+}
+.calc_container_wrapper{
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+.calc_container_calc{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 50%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.calc_container_info{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+max-width: 50%;
+  box-sizing: border-box;
+
+
+  >p{
+    font-size: 14px;
+    line-height: 25px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+
+    >span{
+      font-weight: bold;
+      color: rgba(255, 255, 255,1);
+      white-space: nowrap;
+
+    }
+  }
+}
+
+.controls{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  gap:20px;
+}
+.calc_wrapper_content_list{
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.proccess_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+
+  > h4 {
+    width: 40%;
+    min-height: 100%;
+    font-size: 26px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 50px;
+  }
+  > p {
+    width: 50%;
+    min-height: 100%;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: normal;
+    text-align: left;
+    opacity: 0.8;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding-left: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 750px) {
+
+  .info_item{
+    max-width: 100%;
+  }
+  .calc_wrapper_content_list{
+    gap: 80px;
+  }
+  .calc_container{
+    max-height: 100vh;
+
+  }
+  .proccess_item {
+    flex-direction: column;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+
+    *{
+      width: 100%!important;
+      border:none!important;
+      text-align: left!important;
+      padding-left: 30px!important;
+    }
+    >h4{
+      margin-bottom: 10px;
+    }
+  }
+
+  .calc_tab_wrapper{
+    padding: 50px 0px;
+    border-radius: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 1100px;
+    transition: height 300ms ease-in-out;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+}
+  .calc_container_wrapper{
+    flex-direction: column;
+    >*{
+      max-width: 100%;
+    }
+  }
+}
+

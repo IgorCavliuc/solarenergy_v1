@@ -1,0 +1,63 @@
+
+[
+  {
+    "id": 0,
+    "label": "Солнечная панель 550W (2375 MDL)",
+    "value": "550W",
+    "nominalPowerWatt": 400,
+    "moduleEfficiency": 45,
+    "price": 2375,
+    "area": {
+      "first": 1134,
+      "second":2278
+    }
+  },
+  {
+    "id": 1,
+    "label": "Солнечная панель 400W (2970 MDL)",
+    "value": "400W",
+    "nominalPowerWatt": 400,
+    "moduleEfficiency": 20.8,
+    "price": 2970,
+    "area": {
+      "first": 1988,
+      "second":1098
+    }
+  },
+  {
+    "id": 2,
+    "label": "Солнечная панель 420W (2600 MDL)",
+    "value": "420W",
+    "nominalPowerWatt": 420,
+    "moduleEfficiency": 21.1,
+    "price": 2600,
+    "area": {
+      "first": 1814,
+      "second":1096
+    }
+  },
+  {
+    "id": 3,
+    "label": "Солнечная панель 500W (3960 MDL)",
+    "value": "500W",
+    "nominalPowerWatt": 500,
+    "moduleEfficiency": 21.1,
+    "price": 3960,
+    "area": {
+      "first": 1988,
+      "second":1098
+    }
+  },
+  {
+    "id": 4,
+    "label": "Солнечная панель 455W (3452 MDL)",
+    "value": "455W",
+    "nominalPowerWatt": 455,
+    "moduleEfficiency": 21.1,
+    "price": 3452,
+    "area": {
+      "first": 1988,
+      "second":1098
+    }
+  }
+]

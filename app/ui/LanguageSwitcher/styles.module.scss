@@ -1,0 +1,20 @@
+.language_switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+
+  > p {
+    cursor: pointer;
+    color: var(--text-secondary);
+    //&:not(:last-child) {
+    //  &::after {
+    //    content: "|";
+    //    padding-left: 10px;
+    //  }
+    //}
+    &.active_language {
+      color: var(--text-primary);
+    }
+  }
+}

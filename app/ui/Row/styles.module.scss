@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.title {
+}
+.children {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+
+  .children{
+    flex-direction: column;
+    gap: 15px;
+
+  }
+}
