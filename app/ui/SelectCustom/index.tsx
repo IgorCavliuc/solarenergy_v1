@@ -88,7 +88,7 @@ export const SelectCustom: React.FC<SelectCustomProps> = ({
     if (value) {
       setSelectedValue(value);
     }
-  }, []);
+  }, [value]);
   useEffect(() => {
     setSearchValue("");
     if (showMenu && searchRef.current) {

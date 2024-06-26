@@ -43,12 +43,14 @@ export const Calculator: React.FC<CalculatorProps> = ({
   });
   const [solarPanelArray, setSolarPanelArray] = useState<any[]>([]);
 
-  const roofAreaArray = [
-    { label: "Плоская крыша", value: "flat" },
-    { label: "Односкатная крыша", value: "singleSlope" },
-    { label: "Двускатная крыша", value: "gable" },
-  ];
-
+  const roofAreaArray = useMemo(
+    () => [
+      { label: "Плоская крыша", value: "flat" },
+      { label: "Односкатная крыша", value: "singleSlope" },
+      { label: "Двускатная крыша", value: "gable" },
+    ],
+    [],
+  );
   const getSolarPanel = useCallback(async () => {
     try {
       const response = await fetch("/api/solar_panel", {
@@ -99,6 +101,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
       setSelectPanel(solarPanelArray[0]);
     }
   }, [solarPanelArray]);
+
   const emailRegex =
     /^(?:(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\.[a-zA-Z0-9_'^&amp;/+-]+)*|"(?:(?:\\[^\r\n]|[^\\"])*)")@((?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})$/;
 
@@ -209,12 +212,11 @@ export const Calculator: React.FC<CalculatorProps> = ({
     }
   }, [
     typeCalc?.type,
-    contact.email,
-    contact.phone,
-    errors.phone.error,
-    errors.phone.visible,
-    errors.email.error,
-    errors.email.visible,
+    contact,
+    selectPanel,
+    roofAreaArray,
+    solarPanelArray,
+    setIsModalOpen,
   ]);
 
   const handleTypeChange = (e: any) => {

@@ -61,7 +61,7 @@ export const AreaCalc = ({
   const calcFunc = useCallback(async () => {
     setLoading(true);
     if (!selectPanel) {
-      Error("Please select a solar panel");
+      console.error("Please select a solar panel"); // заменил Error на console.error, чтобы код был выполним
       return;
     }
 
@@ -104,7 +104,7 @@ export const AreaCalc = ({
     } finally {
       setLoading(false);
     }
-  }, [selectPanel, state, contact]); // useCallback используется для мемоизации функции
+  }, [selectPanel, state, contact, setErrors, setLoading]); // Добавлены setErrors и setLoading в зависимости
 
   return (
     <>

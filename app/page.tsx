@@ -1,7 +1,7 @@
 "use client";
 import styles from "./styles.module.scss";
 import { ScrollToBottom } from "@/app/ui";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Row } from "@/app/ui/Row";
 import { Button } from "@/app/ui/Button";
 import { Calculator } from "@/app/components";
@@ -9,16 +9,19 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const typeCalcValue = [
-    {
-      type: "needs",
-      label: "Для закрытия моих потребностей",
-    },
-    {
-      type: "area",
-      label: "Перекрыть полностью необходимую площадь",
-    },
-  ];
+  const typeCalcValue = useMemo(
+    () => [
+      {
+        type: "needs",
+        label: "Для закрытия моих потребностей",
+      },
+      {
+        type: "area",
+        label: "Перекрыть полностью необходимую площадь",
+      },
+    ],
+    [],
+  );
 
   const proccessList = [
     {
@@ -79,7 +82,7 @@ export default function Home() {
   });
   useEffect(() => {
     setTypeCalc(typeCalcValue[0]);
-  }, []);
+  }, [typeCalcValue]);
 
   return (
     <div>
@@ -109,7 +112,7 @@ export default function Home() {
           <div className={styles.calc_wrapper_content_list}>
             {proccessList.map((item, index) => {
               return (
-                <div className={styles.proccess_item}>
+                <div key={index} className={styles.proccess_item}>
                   <h4>{item.title}</h4>
                   <p>{item.description}</p>
                 </div>

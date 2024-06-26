@@ -65,7 +65,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       },
       hideErrorIcon,
       inputClassName,
-      rootContainerProps,
+      rootContainerProps = {},
       labelProps,
       containerProps,
       inputContainerProps,
@@ -86,15 +86,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const renderClearButton = hasValue && !props.disabled && isClearable;
     const { error, message, visible } = errors;
 
+    const { disabled, onChange } = props;
+    const { onBlur } = rootContainerProps;
+
     const onClearButtonClick = useCallback(() => {
-      if (!props.disabled) {
+      if (!disabled) {
         if (onClear) {
           onClear();
         } else {
-          return props?.onChange?.(null as any);
+          return onChange?.(null as any);
         }
       }
-    }, [props.disabled, onClear, props.onChange]);
+    }, [disabled, onClear, onChange]);
 
     const onContainerBlur = useCallback(
       (e: FocusEvent<HTMLDivElement>) => {
@@ -104,14 +107,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ) {
           if (additionalOnBlurCheck) {
             if (additionalOnBlurCheck(e)) {
-              return rootContainerProps?.onBlur?.(e);
+              return onBlur?.(e);
             }
           } else {
-            return rootContainerProps?.onBlur?.(e);
+            return onBlur?.(e);
           }
         }
       },
-      [rootContainerProps?.onBlur, additionalOnBlurCheck],
+      [onBlur, additionalOnBlurCheck],
     );
 
     return (
@@ -211,3 +214,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
+Input.displayName = "Input";

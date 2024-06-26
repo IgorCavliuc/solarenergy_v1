@@ -126,7 +126,7 @@ export const NeedsCalc = ({
         setLoading(false);
       }
     },
-    [roofType, state, contact],
+    [roofType, state, contact, selectPanel, setErrors, setLoading],
   );
 
   return (
