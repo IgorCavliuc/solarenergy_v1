@@ -41,7 +41,7 @@ const calculateSolarPanelRequirements = ({
 }: SolarPanelRequirementsInput) => {
   const { nominalPowerWatt, price, area } = selectPanel;
 
-  // Calculate roof slope angle
+  // Расчет угла наклона крыши
   const roofSlopeAngleRadians =
     roofType.value === "singleSlope"
       ? Math.atan(roofHeight / houseWidth)
@@ -50,7 +50,7 @@ const calculateSolarPanelRequirements = ({
         : 0;
   const roofSlopeAngleDegrees = roofSlopeAngleRadians * (180 / Math.PI);
 
-  // Calculate roof area
+  // Расчет площади крыши
   const roofArea =
     roofType.value === "flat"
       ? houseLength * houseWidth
@@ -58,31 +58,31 @@ const calculateSolarPanelRequirements = ({
         ? (houseLength * houseWidth) / Math.cos(roofSlopeAngleRadians)
         : 0;
 
-  // Calculate panel area
+  // Расчет площади одной панели
   const panelArea = (area.first * area.second) / 1000000;
 
-  // Daily energy production per panel (kWh)
+  // Ежедневная энергия производства одной панели (кВтч)
   const dailyEnergyProduction = (nominalPowerWatt * sunlightHoursPerDay) / 1000;
 
-  // Calculate number of panels needed
+  // Расчет необходимого количества панелей
   const panelsNeeded = Math.ceil(
     averageMonthlyConsumption / (dailyEnergyProduction * 30),
   );
 
-  // Check if panels can be installed on the roof
+  // Проверка возможности установки панелей на крыше
   const totalPanelArea = panelsNeeded * panelArea;
   const canInstallPanels = totalPanelArea <= roofArea;
 
-  // Calculate installation cost
-  const installationCostPerPanel = 500; // Example installation cost per panel
+  // Расчет стоимости установки
+  const installationCostPerPanel = 500; // Пример стоимости установки одной панели
   const totalCost =
     (panelsNeeded * price + panelsNeeded * installationCostPerPanel) * 3;
 
-  // Calculate annual savings
+  // Расчет экономии в год
   const annualEnergyProduction = dailyEnergyProduction * 365 * panelsNeeded;
   const annualSavings = annualEnergyProduction * costPerKWhMDL;
 
-  // Calculate payback period
+  // Расчет периода окупаемости
   const paybackPeriod = totalCost / annualSavings;
 
   return {
@@ -110,21 +110,7 @@ export default async function handler(
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
-        type: "OAuth2",
-        // clientId: process.env.OAUTH_CLIENTID,
-        // clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        // refreshToken: process.env.OAUTH_REFRESH_TOKEN,
       },
-      pool: true, // Use pooled connections
-      maxConnections: 1, // Max connections in the pool
-      maxMessages: 3, // Max messages per connection
-      rateDelta: 20000, // Max send rate in ms
-      rateLimit: 5, // Max number of messages to send per rateDelta
-      logger: true, // Enable logging for debugging
-      debug: true, // Enable debug output
-      connectionTimeout: 60000, // Connection timeout
-      greetingTimeout: 30000, // Greeting timeout
-      socketTimeout: 60000, // Socket timeout
     });
 
     const mailOptions = {
@@ -177,20 +163,20 @@ export default async function handler(
               <h1>Расчет проекта установки солнечных панелей</h1>
             </div>
             <div class="content">
-              <p>${input.contact.lastname} ${input.contact.name},
+                 <p>${input.contact.lastname} ${input.contact.name},
               <p>Ваш номер телефона ${input.contact.phone}, а также адрес электронной почты ${input.contact.email} были сохранены в нашей базе и скоро вам перезвонит наш менеджер.</p>
-              <br/>
-              <p>Расчет на <span>${data.panelsNeeded} солнечных панелей. </span> (общая площадь панелей <span> ${data.totalPanelArea?.toFixed(2)} м²</span>) </p>
+             <br/>
+              <p>Расчет на <span>${data.panelsNeeded} солнечных панелей. </span> (общая пдощадь панелей <span> ${data.totalPanelArea?.toFixed(2)} м²</span>) </p>
               <p>Общая начальная стоимость составляет примерно: <span>${data.totalCost?.toLocaleString("de-DE")} MDL (&#8776; ${(data.totalCost / 19.5).toLocaleString("de-DE")} EUR)</span>.</p>
               <br/>
               <p>Примерная экономия в год: <span>${data.annualSavings?.toLocaleString("de-DE")} MDL (&#8776; ${(data.annualSavings / 19.5).toLocaleString("de-DE")} EUR)</span>.</p>
               <p>Окупаемость за <span>${data.paybackPeriod?.toFixed(2)} лет</span>.</p>
               <p>Площадь здания<span> &#8776; ${data.roofArea?.toFixed(2)}м²</span> </p>
-              <p>Высота крыши <span>(угол склона &#8776; ${data.roofSlopeAngleDegrees} °)</span> </p>
-              <p>По всем данным: клиент ${data.canInstallPanels ? "МОЖЕТ установить необходимое количество панелей." : "НЕ МОЖЕТ установить необходимое количество панелей."}.</p>
-              <br/>
+              <p>Выысота крыши <span>(угол склона &#8776; ${data.roofSlopeAngleDegrees} °)</span> </p>
+              <p>При всех доступных данных было, заключение: клиент ${data.canInstallPanels ? "МОЖЕТ установить необходимое количество панелей." : "НЕ МОЖЕТ установить необходимое количество панелей."}.</p>
+            <br/>
               <p>Если у вас возникнут вопросы или вам потребуется помощь, наша команда поддержки всегда готова помочь. Вы можете связаться с нами по адресу <a href="mailto:cavliuc.serv@gmail.com">cavliuc.serv@gmail.com</a> или посетить наш <a href="https://whatstheplan.com/support">раздел поддержки на сайте</a>.</p>
-              <p>Мы надеемся, что наш сервис поможет вам более экономично управлять вашим бюджетом и быть более экологичным!</p>
+              <p>Мы надеемся, что наш сервис поможет более экономно подходить к вашему бюджету и быть более экологичным!</p>
             </div>
             <div class="footer">
               <p>С уважением,<br>Команда SolarEnergy</p>
@@ -252,20 +238,19 @@ export default async function handler(
               <h1>Новый заинтересованный пользователь!</h1>
             </div>
             <div class="content">
-              <p>Имя: ${input.contact.name} ${input.contact.lastname}</p>
-              <p>Email: ${input.contact.email}</p>
-              <p>Телефон: ${input.contact.phone}</p>
+              <p>Новый пользователь заинтересован солнечными панелями.</p>
+               <p>Имя ${input.contact.name}, фамилия ${input.contact.lastname}</p>
+               <p>Номер телефона для связи: ${input.contact.phone}</p>
+               <p>Арес электронной почты ${input.contact.email}</p>
+               <br/>
+              <p>Расчет на <span>${data.panelsNeeded} солнечных панелей. </span> (общая пдощадь панелей <span> ${data.totalPanelArea?.toFixed(2)} м²</span>) </p>
+              <p>Общая начальная стоимость составляет примерно: <span>${data.totalCost?.toLocaleString("de-DE")} MDL (&#8776; ${(data.totalCost / 19.5).toLocaleString("de-DE")} EUR)</span>.</p>
               <br/>
-              <p>Расчет на <span>${data.panelsNeeded} солнечных панелей.</span></p>
-              <p>Общая площадь панелей: <span>${data.totalPanelArea?.toFixed(2)} м²</span></p>
               <p>Примерная экономия в год: <span>${data.annualSavings?.toLocaleString("de-DE")} MDL (&#8776; ${(data.annualSavings / 19.5).toLocaleString("de-DE")} EUR)</span>.</p>
               <p>Окупаемость за <span>${data.paybackPeriod?.toFixed(2)} лет</span>.</p>
-              <p>Площадь здания: <span>${data.roofArea?.toFixed(2)} м²</span></p>
-              <p>Высота крыши (угол склона): <span>${data.roofSlopeAngleDegrees} °</span></p>
-              <p>По всем данным: клиент ${data.canInstallPanels ? "МОЖЕТ установить необходимое количество панелей." : "НЕ МОЖЕТ установить необходимое количество панелей."}</p>
-            </div>
-            <div class="footer">
-              <p>С уважением,<br>Команда SolarEnergy</p>
+              <p>Площадь здания<span> &#8776; ${data.roofArea?.toFixed(2)}м²</span> </p>
+              <p>Выысота крыши <span>(угол склона &#8776; ${data.roofSlopeAngleDegrees} °)</span> </p>
+              <p>При всех доступных данных было, заключение: клиент ${data.canInstallPanels ? "МОЖЕТ установить необходимое количество панелей." : "НЕ МОЖЕТ установить необходимое количество панелей."}.</p>
             </div>
           </div>
         </body>
@@ -273,15 +258,14 @@ export default async function handler(
       `,
     };
 
-    // Send emails
-    await Promise.all([
-      transporter.sendMail(mailOptions),
-      transporter.sendMail(mailForMe),
-    ]);
+    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailForMe);
 
-    res.status(200).json({ message: "Emails sent successfully!" });
+    res.status(200).json(data);
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error("Error calculating solar panel requirements:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to calculate solar panel requirements" });
   }
 }
