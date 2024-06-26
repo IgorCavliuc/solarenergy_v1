@@ -84,20 +84,20 @@
   background-position: center;
   z-index: 1;
   opacity: .1;
+  position: absolute;
 
 }
 .info_wrapper_content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  width: 100%;
-
-  padding: 20px ;
-  gap: 60px;
+  margin: auto 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  padding: 20px;
+  gap: 60px;
 }
 .calc_wrapper{
   //position: relative;
@@ -325,6 +325,9 @@ max-width: 50%;
     >*{
       max-width: 100%;
     }
+  }
+  .info_wrapper_content{
+    height: 100%;
   }
 }
 
