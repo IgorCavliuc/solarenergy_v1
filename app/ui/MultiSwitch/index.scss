@@ -3,8 +3,6 @@
   display: flex;
   background-color: transparent;
   overflow: hidden;
-  //height: 60px;
-  //border: 1px solid var(--border-secondary);
   width: 100%;
   gap: 20px;
 }
@@ -30,8 +28,6 @@
       left: -10px;
       width: 1px;
       height: 80%;
-
-      //background: var(--border-secondary);
       border-left: 1px solid rgba(255, 255, 255, 0.2);
     }
   }
