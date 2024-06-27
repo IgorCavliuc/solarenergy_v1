@@ -338,7 +338,9 @@ max-width: 50%;
       margin:0;
   }
   .calc_container{
-    max-height: 100vh;
+    min-height: auto;
+    max-height: none;
+    height: auto;
 
   }
   .proccess_item {
