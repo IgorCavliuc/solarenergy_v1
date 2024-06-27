@@ -19,3 +19,12 @@
   color: #fff;
 text-transform: uppercase;
 }
+
+@media only screen and (max-width: 750px) {
+  .container {
+  padding-top: 20px;
+  }
+  .logo{
+    font-size: 18px;
+  }
+}

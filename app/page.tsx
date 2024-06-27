@@ -3,9 +3,12 @@ import styles from "./styles.module.scss";
 import { ScrollToBottom } from "@/app/ui";
 import { useEffect, useMemo, useState } from "react";
 import { Row } from "@/app/ui/Row";
-import { Button } from "@/app/ui/Button";
 import { Calculator } from "@/app/components";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
+import projectImage from "@/app/assets/project.jpeg";
+import makeImage from "@/app/assets/make.jpeg";
+import testImage from "@/app/assets/test.jpeg";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -84,6 +87,7 @@ export default function Home() {
     setTypeCalc(typeCalcValue[0]);
   }, [typeCalcValue]);
 
+  // @ts-ignore
   return (
     <div>
       <Calculator
@@ -97,34 +101,49 @@ export default function Home() {
         <div className={styles.main_background}></div>
         <div className={styles.main_block}>
           <p className={styles.main_title}>Energy Development Group</p>
-          <p className={styles.main_descripton}>Renewable Energy Developers</p>
-          <Button onClick={() => setIsModalOpen(true)}>
-            Расчитать стоимость установки
-          </Button>
+          <p className={styles.main_descripton}>
+            Renewable Energy Developers - Save Energy, Save Nature, Invest in
+            the Future!
+          </p>
+          <p
+            className={styles.main_open_form}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Open form for calculation
+          </p>
         </div>
         <ScrollToBottom />
       </div>
 
       <div className={styles.calc_wrapper}>
         <div className={styles.calc_wrapper_content}>
-          <h1>The process of working on a project (from start to support)</h1>
+          <h1 className={styles.content_title}>
+            The process of working on a project
+          </h1>
 
-          <div className={styles.calc_wrapper_content_list}>
-            {proccessList.map((item, index) => {
-              return (
-                <div key={index} className={styles.proccess_item}>
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                </div>
-              );
-            })}
+          <div className={styles.calc_wrapper_content_steps}>
+            <div className={styles.calc_wrapper_content_list}>
+              {proccessList.map((item, index) => {
+                return (
+                  <div key={index} className={styles.proccess_item}>
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className={styles.calc_wrapper_content_image}>
+              <Image src={projectImage} alt="Project Icon" />
+              <Image src={makeImage} alt="Make Icon" />
+              <Image src={testImage} alt="Test Icon" />
+            </div>
           </div>
         </div>
       </div>
       <div className={styles.info_wrapper}>
         <div className={styles.calc_wrapper_bg}></div>
         <div className={styles.info_wrapper_content}>
-          <h1>
+          <h1 className={styles.content_title}>
             Benefits of Using Solar Panels as an Alternative Energy Source
           </h1>
 
