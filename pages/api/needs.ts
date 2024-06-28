@@ -144,6 +144,9 @@ export default async function handler(
               padding: 20px;
               border-radius: 10px;
               background: white;
+                 p{
+              color: #000;
+              }
             }
             .header {
               text-align: center;
@@ -219,6 +222,9 @@ export default async function handler(
               padding: 20px;
               border-radius: 10px;
               background: white;
+                 p{
+              color: #000;
+              }
             }
             .header {
               text-align: center;
